@@ -11,7 +11,6 @@ describe('Scoreboard tests', () => {
 		it('should start a new match with score 0 - 0', () => {
 			scoreboard.startMatch('Spain', 'Brazil');
 			const summary = scoreboard.getSummary();
-			console.log(scoreboard.toString());
 
 			expect(summary.length).toBe(1);
 			expect(summary[0].homeTeam).toBe('Spain');
@@ -46,8 +45,6 @@ describe('Scoreboard tests', () => {
 			scoreboard.startMatch('Spain', 'Brazil');
 			scoreboard.updateScore('Spain', 'Brazil', 1, 2);
 			const summary = scoreboard.getSummary();
-			console.log(scoreboard.toString());
-
 			expect(summary[0].homeTeam).toBe('Spain');
 			expect(summary[0].homeTeamScore).toBe(1);
 			expect(summary[0].awayTeam).toBe('Brazil');
@@ -72,8 +69,6 @@ describe('Scoreboard tests', () => {
 			scoreboard.startMatch('Spain', 'Brazil');
 			scoreboard.finishMatch('Spain', 'Brazil');
 			const summary = scoreboard.getSummary();
-			console.log(scoreboard.toString());
-
 			expect(summary.length).toBe(0);
 		});
 
@@ -86,21 +81,16 @@ describe('Scoreboard tests', () => {
 		it('should return sorted scoreboard summary', () => {
 			scoreboard.startMatch('Mexico', 'Canada');
 			scoreboard.updateScore('Mexico', 'Canada', 0, 5);
-
 			scoreboard.startMatch('Spain', 'Brazil');
 			scoreboard.updateScore('Spain', 'Brazil', 10, 2);
-
 			scoreboard.startMatch('Germany', 'France');
 			scoreboard.updateScore('Germany', 'France', 2, 2);
-
 			scoreboard.startMatch('Uruguay', 'Italy');
 			scoreboard.updateScore('Uruguay', 'Italy', 6, 6);
-
 			scoreboard.startMatch('Argentina', 'Australia');
 			scoreboard.updateScore('Argentina', 'Australia', 3, 1);
 
 			const summary = scoreboard.getSummary();
-			console.log(scoreboard.toString());
 
 			const arraySummary = summary.map((match) => [
 				match.homeTeam,
