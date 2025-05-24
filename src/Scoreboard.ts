@@ -43,7 +43,9 @@ export class Scoreboard {
 	};
 
 	getSummary = () => {
-		return this.matches;
+		return [...this.matches].sort(
+			(a, b) => b.homeTeamScore + b.awayTeamScore - (a.homeTeamScore + a.awayTeamScore)
+		);
 	};
 
 	toString = () => {
