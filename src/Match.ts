@@ -14,9 +14,15 @@ export class Match {
 	get homeTeamScore() {
 		return this._homeTeamScore;
 	}
+	set homeTeamScore(newHomeTeamScore: number) {
+		this._homeTeamScore = newHomeTeamScore;
+	}
 
 	get awayTeamScore() {
 		return this._awayTeamScore;
+	}
+	set awayTeamScore(newAwayTeamScore: number) {
+		this._awayTeamScore = newAwayTeamScore;
 	}
 
 	toString = () => {

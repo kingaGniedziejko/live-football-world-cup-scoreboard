@@ -22,7 +22,16 @@ export class Scoreboard {
 		awayTeam: string,
 		homeTeamScore: number,
 		awayTeamScore: number
-	) => {};
+	) => {
+		if (homeTeamScore < 0 || awayTeamScore < 0) throw new Error('Values are invalid');
+		const match = this.findMatch(homeTeam, awayTeam);
+		if (match) {
+			match.homeTeamScore = homeTeamScore;
+			match.awayTeamScore = awayTeamScore;
+		} else {
+			throw new Error('Match does not exist');
+		}
+	};
 
 	getSummary = () => {
 		return this.matches;
