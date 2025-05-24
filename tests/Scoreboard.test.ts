@@ -66,4 +66,19 @@ describe('Scoreboard tests', () => {
 			);
 		});
 	});
+
+	describe('Finish match tests', () => {
+		it('should finish a match and remove it from scoreboard', () => {
+			scoreboard.startMatch('Spain', 'Brazil');
+			scoreboard.finishMatch('Spain', 'Brazil');
+			const summary = scoreboard.getSummary();
+			console.log(scoreboard.toString());
+
+			expect(summary.length).toBe(0);
+		});
+
+		it('should throw an error when finishing if match does not exist', () => {
+			expect(() => scoreboard.finishMatch('Spain', 'Brazil')).toThrowError('Match does not exist');
+		});
+	});
 });

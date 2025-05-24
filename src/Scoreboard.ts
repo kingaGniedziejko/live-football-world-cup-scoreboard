@@ -33,6 +33,8 @@ export class Scoreboard {
 		}
 	};
 
+	finishMatch = (homeTeam: string, awayTeam: string) => {};
+
 	getSummary = () => {
 		return this.matches;
 	};
