@@ -81,4 +81,41 @@ describe('Scoreboard tests', () => {
 			expect(() => scoreboard.finishMatch('Spain', 'Brazil')).toThrowError('Match does not exist');
 		});
 	});
+
+	describe('Summary tests', () => {
+		it('should return sorted scoreboard summary', () => {
+			scoreboard.startMatch('Mexico', 'Canada');
+			scoreboard.updateScore('Mexico', 'Canada', 0, 5);
+
+			scoreboard.startMatch('Spain', 'Brazil');
+			scoreboard.updateScore('Spain', 'Brazil', 10, 2);
+
+			scoreboard.startMatch('Germany', 'France');
+			scoreboard.updateScore('Germany', 'France', 2, 2);
+
+			scoreboard.startMatch('Uruguay', 'Italy');
+			scoreboard.updateScore('Uruguay', 'Italy', 6, 6);
+
+			scoreboard.startMatch('Argentina', 'Australia');
+			scoreboard.updateScore('Argentina', 'Australia', 3, 1);
+
+			const summary = scoreboard.getSummary();
+			console.log(scoreboard.toString());
+
+			const arraySummary = summary.map((match) => [
+				match.homeTeam,
+				match.homeTeamScore,
+				match.awayTeam,
+				match.awayTeamScore
+			]);
+
+			expect(arraySummary).toEqual([
+				['Uruguay', 6, 'Italy', 6],
+				['Spain', 10, 'Brazil', 2],
+				['Mexico', 0, 'Canada', 5],
+				['Argentina', 3, 'Australia', 1],
+				['Germany', 2, 'France', 2]
+			]);
+		});
+	});
 });
