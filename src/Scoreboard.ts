@@ -17,6 +17,13 @@ export class Scoreboard {
 		this.matches.unshift(new Match(homeTeam, awayTeam));
 	};
 
+	updateScore = (
+		homeTeam: string,
+		awayTeam: string,
+		homeTeamScore: number,
+		awayTeamScore: number
+	) => {};
+
 	getSummary = () => {
 		return this.matches;
 	};
