@@ -1,0 +1,24 @@
+{
+	"name": "live-football-world-cup-score-board",
+	"version": "1.0.0",
+	"description": "Library showing and updating ongoing matches and their scores.",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest"
+	},
+	"keywords": [
+		"score board",
+		"football",
+		"world cup",
+		"live"
+	],
+	"author": "Kinga Gniedziejko",
+	"license": "ISC",
+	"dependencies": {},
+	"devDependencies": {
+		"@types/jest": "^27.5.1",
+		"jest": "^28.1.0",
+		"ts-jest": "^28.0.2",
+		"typescript": "^4.6.4"
+	}
+}
