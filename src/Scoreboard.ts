@@ -33,7 +33,14 @@ export class Scoreboard {
 		}
 	};
 
-	finishMatch = (homeTeam: string, awayTeam: string) => {};
+	finishMatch = (homeTeam: string, awayTeam: string) => {
+		const matchIndex = this.findMatchIndex(homeTeam, awayTeam);
+		if (matchIndex === -1) {
+			throw new Error('Match does not exist');
+		} else {
+			this.matches.splice(matchIndex, 1);
+		}
+	};
 
 	getSummary = () => {
 		return this.matches;
@@ -51,5 +58,11 @@ export class Scoreboard {
 
 	private findMatchByTeam = (team: string) => {
 		return this.matches.find((match) => match.homeTeam === team || match.awayTeam === team);
+	};
+
+	private findMatchIndex = (homeTeam: string, awayTeam: string) => {
+		return this.matches.findIndex(
+			(match) => match.homeTeam === homeTeam && match.awayTeam === awayTeam
+		);
 	};
 }
