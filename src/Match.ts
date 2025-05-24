@@ -18,4 +18,8 @@ export class Match {
 	get awayTeamScore() {
 		return this._awayTeamScore;
 	}
+
+	toString = () => {
+		return `${this.homeTeam} ${this.homeTeamScore} - ${this.awayTeam} ${this._awayTeamScore}`;
+	};
 }

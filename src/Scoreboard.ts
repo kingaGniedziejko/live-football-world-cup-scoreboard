@@ -7,9 +7,31 @@ export class Scoreboard {
 		this.matches = [];
 	}
 
-	startMatch = (homeTeam: string, awayTeam: string) => {};
+	startMatch = (homeTeam: string, awayTeam: string) => {
+		if (homeTeam === '' || awayTeam === '' || homeTeam === awayTeam)
+			throw new Error('Team names are invalid');
+		if (this.findMatch(homeTeam, awayTeam)) throw new Error('Match already exists');
+		if (this.findMatchByTeam(homeTeam) || this.findMatchByTeam(awayTeam))
+			throw new Error('One of the teams is already playing');
+
+		this.matches.unshift(new Match(homeTeam, awayTeam));
+	};
 
 	getSummary = () => {
 		return this.matches;
+	};
+
+	toString = () => {
+		return this.getSummary()
+			.map((match, index) => `${index + 1}. ${match.toString()}`)
+			.join('\n');
+	};
+
+	private findMatch = (homeTeam: string, awayTeam: string) => {
+		return this.matches.find((match) => match.homeTeam === homeTeam && match.awayTeam === awayTeam);
+	};
+
+	private findMatchByTeam = (team: string) => {
+		return this.matches.find((match) => match.homeTeam === team || match.awayTeam === team);
 	};
 }
